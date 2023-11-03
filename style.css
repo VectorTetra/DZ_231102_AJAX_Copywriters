@@ -1,0 +1,12 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: wheat;    
+}
+#users_container{
+    display: flex;
+    flex-flow: row wrap;
+}
+#users_container > div{
+    border: 1px solid black;
+    padding: 5px 10px 5px 0;
+}
