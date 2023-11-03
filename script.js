@@ -20,12 +20,27 @@ $(function(){
                 $('#trPhone').text(user[0].phone);
                 $('#trWebsite').text(user[0].website);
                 $('#userInfo').css('display','block');
+                $('#userPosts').css('display','none');
                 // Записуємо ID копірайтера для можливого запиту постів
                 selectedUserId = user[0].id;
             })                   
         });
 
-        
+        $('#buttonShowPosts').on("click", function(){
+            $.getJSON(`https://jsonplaceholder.typicode.com/posts?userId=${selectedUserId}`,function(posts)
+            {
+                $('#posts_container').html('');
+                $(posts).each(function(index){
+                    $('#posts_container').append(
+                    `<div class="post_item">
+                        <div class="post_title">${posts[index].title}</div>
+                        <div>${posts[index].body}</div>
+                    </div>`);
+                });
+                $('#userPosts').css('display','block');
+            }
+            );
+        });
     });
     
    
